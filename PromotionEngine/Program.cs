@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PromotionEngine.Service;
+using System;
 
 namespace PromotionEngine
 {
@@ -6,7 +8,9 @@ namespace PromotionEngine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
+            var serviceProvider = new ServiceCollection()
+                                    .AddTransient<IPromotionEngineService, PromotionEngineService>()
+                                    .BuildServiceProvider();
         }
     }
 }
