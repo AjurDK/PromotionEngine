@@ -4,7 +4,7 @@ using Xunit;
 
 namespace PromotionEngine.Tests
 {
-    public class UnitTest1
+    public class UnitTest1 : IClassFixture<ProvideFixture>
     {
         private ServiceProvider _serviceProvide;
 
