@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using PromotionEngine.Service;
 using System.Collections.Generic;
 using Xunit;
 
@@ -18,7 +19,10 @@ namespace PromotionEngine.Tests
         {
             var skuIds = new List<string> { "A", "B", "C" };
 
-            Assert.True(100 == 100);
+            var promotionEngineService = _serviceProvide.GetService<IPromotionEngineService>();
+            var totalSum = promotionEngineService.GetGrandTotal(skuIds);
+
+            Assert.True(totalSum == 100);
         }
 
         [Fact]
@@ -26,7 +30,10 @@ namespace PromotionEngine.Tests
         {
             var skuIds = new List<string> { "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "C" };
 
-            Assert.True(370 == 370);
+            var promotionEngineService = _serviceProvide.GetService<IPromotionEngineService>();
+            var totalSum = promotionEngineService.GetGrandTotal(skuIds);
+
+            Assert.True(totalSum == 370);
         }
 
         [Fact]
@@ -34,7 +41,10 @@ namespace PromotionEngine.Tests
         {
             var skuIds = new List<string> { "A", "A", "A", "B", "B", "B", "B", "B", "C", "D" };
 
-            Assert.True(280 == 280);
+            var promotionEngineService = _serviceProvide.GetService<IPromotionEngineService>();
+            var totalSum = promotionEngineService.GetGrandTotal(skuIds);
+
+            Assert.True(totalSum == 280);
         }
     }
 }
