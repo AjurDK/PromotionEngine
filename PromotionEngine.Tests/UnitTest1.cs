@@ -1,3 +1,4 @@
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
 using Xunit;
 
@@ -5,6 +6,13 @@ namespace PromotionEngine.Tests
 {
     public class UnitTest1
     {
+        private ServiceProvider _serviceProvide;
+
+        public UnitTest1(ProvideFixture provideFixture)
+        {
+            _serviceProvide = provideFixture.ServiceProvider;
+        }
+
         [Fact]
         public void GetGrandTotalScenario1()
         {
